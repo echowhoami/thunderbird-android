@@ -1,4 +1,5 @@
 #!/bin/sh
+# Test
 
 #
 # Copyright © 2015 the original authors.
