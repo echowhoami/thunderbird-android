@@ -24,6 +24,22 @@ jobs:
     environment: botmobile
     timeout-minutes: 90
     steps:
+      - name: Dump github context
+        run:   echo "$GITHUB_CONTEXT"
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+      
+      - name: print
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          CONTEXT: toJSON()
+        run: | 
+          echo $HEAD_REF
+          cat ./.github/actions/setup-gradle/action.yml
+          cat ./gradlew
+          
+
       - name: App Token Generate
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         if: ${{ vars.BOT_CLIENT_ID }}
