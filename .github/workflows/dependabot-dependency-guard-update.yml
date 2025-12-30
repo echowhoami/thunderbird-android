@@ -33,11 +33,13 @@ jobs:
       - name: print
         env:
           HEAD_REF: ${{ github.head_ref }}
-          CONTEXT: toJSON()
         run: | 
           echo $HEAD_REF
           cat ./.github/actions/setup-gradle/action.yml
           cat ./gradlew
+          ls
+          pwd
+          whoami
           
 
       - name: App Token Generate
