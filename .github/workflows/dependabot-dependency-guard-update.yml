@@ -39,7 +39,13 @@ jobs:
           token: ${{ steps.app-token.outputs.token || github.token }}
 
       - name: print
-        run: cat ./.github/actions/setup-gradle/action.yml
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: | 
+          echo $HEAD_REF
+          cat ./.github/actions/setup-gradle/action.yml
+          cat ./gradlew
+          
 
       - name: Setup Gradle environment
         uses: ./.github/actions/setup-gradle
